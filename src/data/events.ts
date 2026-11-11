@@ -9,16 +9,16 @@
  *      with the Phoenix offset, e.g. "2027-01-15T21:00:00-07:00"
  *      (Arizona has no daylight saving, so it is always -07:00).
  *   2. Set `sample: false` on real entries. When no entry is a sample,
- *      the "demonstration content" banner disappears on its own.
+ *      the "demo" banner disappears on its own.
  *   3. For real flyer art, set `flyer` to an image path in /public and
  *      the generated poster is replaced by the image.
  *
- * Upcoming vs. past is worked out automatically from the dates, so an
- * event drops into "Previously" once it is over. This array is the only
- * thing a future CMS or calendar feed needs to produce.
+ * Upcoming vs. past is worked out from the dates, and anything in the
+ * next seven days is tagged "this week". This array is the only thing a
+ * future CMS or calendar feed needs to produce.
  */
 
-export type PosterKind = 'rings' | 'form' | 'checker' | 'slash' | 'beam' | 'stack'
+export type PosterKind = 'rings' | 'karaoke' | 'chrome' | 'checker' | 'slash' | 'beam' | 'stack'
 
 export interface BarEvent {
   id: string
@@ -27,11 +27,12 @@ export interface BarEvent {
   start: string
   /** ISO 8601 with offset. Defaults to four hours after start. */
   end?: string
-  description: string
+  /** One short line. Optional. */
+  description?: string
   /** Only fill in once confirmed, e.g. "No cover" or "$10 at the door" */
   admission?: string
   link?: { label: string; url: string }
-  /** e.g. "Every Thursday" */
+  /** e.g. "Weekly" */
   recurring?: string
   poster: PosterKind
   /** Path to real flyer artwork; overrides the generated poster */
@@ -54,35 +55,42 @@ export const events: BarEvent[] = [
   {
     id: 'patio-selectors',
     title: 'Patio Selectors',
-    start: inDays(3, '21:00'),
-    description:
-      'An all-vinyl night out back. Bring a record you love and get a turn in the rotation.',
+    start: inDays(2, '21:00'),
+    description: 'All vinyl. Bring a record.',
     recurring: 'Weekly',
     poster: 'rings',
     sample: true,
   },
   {
-    id: 'audit-night',
-    title: 'Audit Night Karaoke',
-    start: inDays(6, '20:00'),
-    description: 'Sing one song and your performance is reviewed by a panel of people at the bar.',
+    id: 'karaoke',
+    title: 'Karaoke',
+    start: inDays(5, '20:00'),
+    description: 'Ballads, bangers, both.',
     recurring: 'Weekly',
-    poster: 'form',
+    poster: 'karaoke',
+    sample: true,
+  },
+  {
+    id: 'sad-disco',
+    title: 'Sad Disco',
+    start: inDays(9, '22:00'),
+    description: 'Slow songs, fast songs, glitter.',
+    poster: 'chrome',
     sample: true,
   },
   {
     id: 'backyard-flea',
     title: 'Backyard Flea',
-    start: inDays(11, '16:00'),
-    description: 'Zines, prints, thrifted jackets and one guy selling hot sauce, all on the patio.',
+    start: inDays(12, '16:00'),
+    description: 'Zines, prints, thrifted stuff.',
     poster: 'checker',
     sample: true,
   },
   {
-    id: 'write-off-revue',
-    title: 'The Write-Off Revue',
+    id: 'pink-room-revue',
+    title: 'Pink Room Revue',
     start: inDays(16, '21:30'),
-    description: 'A drag and burlesque showcase on a stage roughly the size of a pool table.',
+    description: 'Drag + burlesque.',
     poster: 'slash',
     sample: true,
   },
@@ -90,20 +98,22 @@ export const events: BarEvent[] = [
     id: 'b-movies',
     title: 'B-Movies Out Back',
     start: inDays(24, '19:30'),
-    description: 'A projector, a wall, and a double feature nobody asked for.',
+    description: 'Double feature on the wall.',
     recurring: 'Monthly',
     poster: 'beam',
     sample: true,
   },
   {
-    id: 'extension-filed',
-    title: 'Extension Filed',
+    id: 'no-wave',
+    title: 'No Wave Night',
     start: inDays(-9, '21:00'),
-    description: 'A post-punk patio party for everyone who put it off until the last minute.',
+    description: 'Post-punk on the patio.',
     poster: 'stack',
     sample: true,
   },
 ]
+
+const DAY = 86_400_000
 
 export function splitEvents(list: BarEvent[], now: Date = new Date()) {
   const endOf = (e: BarEvent) =>
@@ -118,6 +128,10 @@ export function splitEvents(list: BarEvent[], now: Date = new Date()) {
       .sort(byStart)
       .reverse(),
   }
+}
+
+export function isThisWeek(e: BarEvent, now: Date = new Date()) {
+  return new Date(e.start).getTime() - now.getTime() < 7 * DAY
 }
 
 const tz = 'America/Phoenix'

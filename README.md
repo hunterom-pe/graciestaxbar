@@ -8,6 +8,7 @@ An unsolicited redesign concept for [Gracie's Tax Bar](https://graciestaxbar.com
 
 - GitHub: [hunterom-pe/graciestaxbar](https://github.com/hunterom-pe/graciestaxbar)
 - Default branch: `main`
+- Tag `v1-concept`: the first (tax-form) direction, kept as a checkpoint. `git checkout v1-concept` to see it.
 
 ## Run it locally
 
@@ -25,25 +26,39 @@ npm run preview  # serve the production build locally
 
 Stack: React 19, TypeScript, Vite, Tailwind CSS v4, lucide-react. No animation library; motion is CSS plus one small IntersectionObserver wrapper.
 
+## Art direction (v2)
+
+Indie sleaze × queer-punk zine × DIY nightlife × pink dive bar. Say less, show more: the page is mostly photography, flyers and stickers, with labels and practical details as the only copy.
+
+- **Type:** Fraunces italic (soft + wonky axes) for the wordmark and cute moments; Bricolage Grotesque, condensed, for labels and UI; Anybody inside the flyers; IBM Plex Mono for utility; Reenie Beanie for the odd ballpoint caption.
+- **Colour:** near-black, deep red, hot pink, warm ivory. Lime, electric blue, orange, plum and chrome appear only in flyers and stickers.
+- **Graphic kit:** photobooth strip, taped prints, film strip, torn-paper section edges, SVG stickers, halftone, grain.
+- **Hover:** photos straighten and flash; buttons press into their offset shadow; flyers lift.
+- **Motion:** respects `prefers-reduced-motion` (the marquee stops, reveals and drops are disabled).
+
 ## Where things live
 
 ```
 src/
   data/
-    site.ts       business facts, links, nav, the "things that happen here" list
+    site.ts       business facts, links, nav, press-reported activities (marquee)
     images.ts     every photo: file, alt text, credit, placeholder flag, focal point
-    events.ts     event listings + upcoming/past logic
+    events.ts     event listings, upcoming/past + "this week" logic
   components/
-    Header.tsx    fixed nav + full-screen mobile menu
-    Hero.tsx
-    Inside.tsx    "A little weird. A lot of heart."
-    EatDrink.tsx
-    Scene.tsx     music / karaoke / photo booth list with swapping photo
-    Patio.tsx
+    Header.tsx    fixed nav + full-screen pink mobile menu
+    Wordmark.tsx  small header lockup
+    Hero.tsx      red-lit photo, wordmark, photobooth strip, stickers
+    Marquee.tsx   ticker of press-reported activities + address
+    Inside.tsx    photo collage
+    OutBack.tsx   pink patio collage
+    FilmStrip.tsx 35mm strip of show photos, leads into Events
     Events.tsx    poster wall (desktop) / swipe rail (mobile) / past list
-    Poster.tsx    the six sample flyers, drawn in SVG
-    Visit.tsx     address, hours, phone, directions
+    Poster.tsx    the seven sample flyers, drawn in SVG
+    FoodDrink.tsx photos + menu links
+    FindUs.tsx    address, directions, hours, phone, Instagram
     Footer.tsx    links, concept disclaimer, photo credits
+    Sticker.tsx   SVG stickers (star, heart, bolt, daisy, arrow, swirl)
+    Edge.tsx      torn-paper section edge
     Photo.tsx     responsive image wrapper driven by images.ts
     Reveal.tsx    scroll-in fade
   index.css       design tokens (@theme), type voices, textures, motion
@@ -52,13 +67,13 @@ public/images/    optimized WebP photos, 800w and 1600w of each
 
 ## Replacing the stock photos
 
-Every photo is temporary. All sixteen are free-licence Unsplash images, credited in the footer and in `src/data/images.ts`. None of them show Gracie's.
+Every photo is temporary. All 23 are free-licence Unsplash images, credited in the footer and in `src/data/images.ts`. None of them show Gracie's.
 
 To swap one for a real photo:
 
 1. Export two WebP files, 800px and 1600px wide, into `public/images/`.
 2. In `src/data/images.ts`, point that entry's `src` at the new files and rewrite `alt`.
-3. Set `placeholder: false`. The "Stock photo · not Gracie's" tag and the footer credit for that image disappear.
+3. Set `placeholder: false`. The small "stock photo" tag and the footer credit for that image disappear.
 4. If the crop is off, adjust `focal` (a CSS `object-position` value such as `"50% 30%"`).
 
 Layout never needs to change: components ask for images by id (`<Photo id="heroInterior" />`).
@@ -67,14 +82,14 @@ Once every image is real, also remove the stock-photo sentence from the footer d
 
 ## Updating events
 
-All six listings in `src/data/events.ts` are made up. To publish real ones:
+All seven listings in `src/data/events.ts` are made up. To publish real ones:
 
 1. Replace the array entries. `start` is an ISO date-time with the Phoenix offset, e.g. `"2027-01-15T21:00:00-07:00"`.
-2. Set `sample: false`. When no entry is a sample, the green "Demo content" banner and the per-event "Fictional sample listing" tags go away.
+2. Set `sample: false`. When no entry is a sample, the lime "Demo" note and the per-flyer "Sample" tags go away.
 3. For real flyer art, set `flyer: "/flyers/whatever.webp"`; the image replaces the generated SVG poster.
 4. Only fill in `admission` and `link` when they're confirmed.
 
-Events move from "Coming up" to "Previously" automatically once they end. The sample entries use dates relative to today so the demo never looks stale; real entries should use fixed dates.
+Events move to "Previously" automatically once they end, and anything starting within seven days gets a "This week" sticker. The sample entries use dates relative to today so the demo never looks stale; real entries should use fixed dates.
 
 The component only needs an array of `BarEvent` objects, so a CMS, Google Calendar feed or a JSON file can replace the hard-coded list later without touching the UI.
 
@@ -86,11 +101,10 @@ The official site could not be loaded while this was built (its TLS certificate 
 | --- | --- |
 | Address, 711 N 7th Ave | Matches the brief and multiple listings |
 | Phone, (602) 366-0111 | Third-party listings only |
-| Hours | Listings disagree on opening time and on Mondays; all say 2 AM close. The site says "Late afternoon to 2 AM" and tells people to check |
+| Hours | Listings disagree on opening time and on Mondays; all say 2 AM close. The site says "Open late · till 2 AM" and tells people to check |
 | Instagram, @graciestaxbar | Handle from press photo credits; link not confirmed |
-| "Used to be a tax office" | Reported by local press |
 | Kitchen and full bar | Reported by local press. No menu items or prices are shown |
-| DJs, karaoke, live music, drag and burlesque, photo booth, movie projections | Reported by local press; labelled as such on the page |
+| DJs, karaoke, live music, drag, burlesque, photo booth, movies out back | Reported by local press; shown only as marquee tags |
 | Interior and patio descriptions | From the project brief |
 
 No parking details, cover charges, age policies or specials are stated anywhere.
@@ -138,8 +152,8 @@ The site sends `noindex, nofollow` three ways: a `<meta name="robots">` tag, the
 
 - Footer disclaimer identifying this as an independent Hunter Made concept, not affiliated with the bar
 - `noindex, nofollow` meta tag, `X-Robots-Tag` header, `robots.txt`
-- "Stock photo · not Gracie's" tags and footer photo credits
-- "Demo content" banner and "Sample" / "Fictional sample listing" labels on every made-up event
+- "stock photo" tags on images, a stock-photo credit in the hero, and footer photo credits
+- "Demo" note in Events and a "Sample" tag on every made-up flyer
 - "Still need confirming" note under hours and phone
 
 ## Remaining manual steps

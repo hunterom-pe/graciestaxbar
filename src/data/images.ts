@@ -21,14 +21,22 @@ export type ImageId =
   | 'insideFlyers'
   | 'patioWall'
   | 'patioChairs'
-  | 'patioAlley'
   | 'patioNight'
-  | 'musicVinyl'
-  | 'musicKaraoke'
-  | 'photobooth'
   | 'drinksPour'
   | 'foodCounter'
   | 'stickerWall'
+  | 'boothStrips'
+  | 'discoBall'
+  | 'punkSinger'
+  | 'punkDrink'
+  | 'redRoom'
+  | 'danceBlur'
+  | 'heartNeon'
+  | 'cocktails'
+  | 'bwFriends'
+  | 'lightsBlur'
+  | 'flashCouple'
+  | 'tattooBar'
 
 export interface SiteImage {
   id: ImageId
@@ -108,14 +116,7 @@ export const images: Record<ImageId, SiteImage> = {
     placeholder: true,
     focal: '50% 55%',
   },
-  patioAlley: {
-    id: 'patioAlley',
-    src: file('patio-alley'),
-    alt: 'Sunlight cutting across a magenta wall toward a small table and a potted tree.',
-    credit: unsplash('Michael Michael', 'Y327GKM51JE'),
-    placeholder: true,
-    focal: '50% 60%',
-  },
+
   patioNight: {
     id: 'patioNight',
     src: file('patio-night'),
@@ -124,27 +125,9 @@ export const images: Record<ImageId, SiteImage> = {
     placeholder: true,
     focal: '50% 30%',
   },
-  musicVinyl: {
-    id: 'musicVinyl',
-    src: file('music-vinyl'),
-    alt: 'Close-up of a red vinyl record spinning on a turntable.',
-    credit: unsplash('Thiago Zanutigh', '860Mi6hEPJc'),
-    placeholder: true,
-  },
-  musicKaraoke: {
-    id: 'musicKaraoke',
-    src: file('music-karaoke'),
-    alt: 'A vertical red neon sign spelling KARAOKE against a dark window.',
-    credit: unsplash('Carl Tronders', 'ZWfeR8wAT7Q'),
-    placeholder: true,
-  },
-  photobooth: {
-    id: 'photobooth',
-    src: file('photobooth'),
-    alt: 'An old-fashioned photo booth with a red curtain, covered in photo strips.',
-    credit: unsplash('Atif Haiqal', '7PMrMnH_LTQ'),
-    placeholder: true,
-  },
+
+
+
   drinksPour: {
     id: 'drinksPour',
     src: file('drinks-pour'),
@@ -166,6 +149,98 @@ export const images: Record<ImageId, SiteImage> = {
     alt: 'A dark wall completely covered in layered stickers and marker tags.',
     credit: unsplash('Max van den Oetelaar', 'uymG7UVPXpI'),
     placeholder: true,
+  },
+  boothStrips: {
+    id: 'boothStrips',
+    src: file('booth-strips'),
+    alt: 'A hand holding three black-and-white photo booth strips of friends pulling faces.',
+    credit: unsplash('Crystal Wen', '3L5XQoJ8xG4'),
+    placeholder: true,
+    focal: '50% 45%',
+  },
+  discoBall: {
+    id: 'discoBall',
+    src: file('disco-ball'),
+    alt: 'A red and pink mirror ball sitting on a metal shelf.',
+    credit: unsplash('Theodor Tietze', 'FM_r4FF9sdQ'),
+    placeholder: true,
+    focal: '50% 55%',
+  },
+  punkSinger: {
+    id: 'punkSinger',
+    src: file('punk-singer'),
+    alt: 'Black-and-white fisheye shot of a singer yelling into a microphone, band behind him.',
+    credit: unsplash('Evgeniy Smersh', 'KbuS9-JWQRw'),
+    placeholder: true,
+    focal: '40% 40%',
+  },
+  punkDrink: {
+    id: 'punkDrink',
+    src: file('punk-drink'),
+    alt: 'A singer tipping back a bottle mid-set under red stage lights.',
+    credit: unsplash('Evgeniy Smersh', 'K1iZTRX6YSY'),
+    placeholder: true,
+    focal: '45% 35%',
+  },
+  redRoom: {
+    id: 'redRoom',
+    src: file('red-room'),
+    alt: 'Silhouettes of people in a narrow room filled with red light and haze.',
+    credit: unsplash('Aleksandr Popov', 'R25Q-pAUeY8'),
+    placeholder: true,
+  },
+  danceBlur: {
+    id: 'danceBlur',
+    src: file('dance-blur'),
+    alt: 'A motion-blurred dance floor streaked with pink and blue light.',
+    credit: unsplash('Nereid Ndreu', 'GybIe7Vgtf4'),
+    placeholder: true,
+  },
+  heartNeon: {
+    id: 'heartNeon',
+    src: file('heart-neon'),
+    alt: 'A red neon heart glowing on a dark wall.',
+    credit: unsplash('Merch HÜSEY', '8ZfrIcSjizA'),
+    placeholder: true,
+  },
+  cocktails: {
+    id: 'cocktails',
+    src: file('cocktails'),
+    alt: 'Two cocktails held up in a dark room, one orange and one green.',
+    credit: unsplash('Sexto Abismo | Ginebra Surrealista', '6w1ZaoZvDuI'),
+    placeholder: true,
+    focal: '55% 50%',
+  },
+  bwFriends: {
+    id: 'bwFriends',
+    src: file('bw-friends'),
+    alt: 'Black-and-white flash photo of three friends with drinks against a graffiti wall.',
+    credit: unsplash('Illia Horokhovsky', 'RO1P1Xm0ENE'),
+    placeholder: true,
+    focal: '50% 40%',
+  },
+  lightsBlur: {
+    id: 'lightsBlur',
+    src: file('lights-blur'),
+    alt: 'Friends outside at night under string lights smeared into streaks by a slow shutter.',
+    credit: unsplash('Leonardo Iribe', 'nq9Jo8DWDjU'),
+    placeholder: true,
+  },
+  flashCouple: {
+    id: 'flashCouple',
+    src: file('flash-couple'),
+    alt: 'Point-and-shoot flash photo of two friends outdoors at night under string lights.',
+    credit: unsplash('Brooke Balentine', '3clMJdv4g9M'),
+    placeholder: true,
+    focal: '40% 50%',
+  },
+  tattooBar: {
+    id: 'tattooBar',
+    src: file('tattoo-bar'),
+    alt: 'A woman with a tattooed back on a stool at a sticker-covered bar.',
+    credit: unsplash('Jessica Christian', 'IReYkVmvhtc'),
+    placeholder: true,
+    focal: '50% 35%',
   },
 }
 

@@ -33,8 +33,8 @@ export const site = {
   hours: {
     // Sources disagree on opening time (4 PM vs 5 PM weekdays, 2 PM weekends)
     // and on whether Monday is open. All agree on a 2 AM close.
-    summary: 'Late afternoon to 2 AM',
-    note: 'Opening times vary by listing. Check Instagram or call before you head over.',
+    summary: 'Open late · till 2 AM',
+    note: 'Opening times vary. Check Instagram before you go.',
     verified: false,
   },
 
@@ -52,47 +52,16 @@ export const site = {
 } as const
 
 export const nav = [
-  { label: 'The Room', href: '#inside' },
-  { label: 'Eat + Drink', href: '#eat' },
-  { label: 'Out Back', href: '#patio' },
+  { label: 'Inside', href: '#inside' },
+  { label: 'Out Back', href: '#outback' },
   { label: 'Events', href: '#events' },
-  { label: 'Visit', href: '#visit' },
+  { label: 'Food + Drink', href: '#food' },
+  { label: 'Find Us', href: '#find' },
 ] as const
 
 /**
- * "What goes on here" list. Each line is something local press has
- * reported about Gracie's, not an official programme. Remove or reword
- * anything the owners don't confirm.
+ * Things local press has reported happening at Gracie's. Shown only as
+ * short tags (marquee + stickers), never as an official schedule.
+ * Remove anything the owners don't confirm.
  */
-export const scene = [
-  {
-    title: 'DJs out back',
-    note: 'Rotating sets on the patio once it gets late.',
-    image: 'musicVinyl',
-  },
-  {
-    title: 'Karaoke',
-    note: 'Nobody is good. Everybody goes.',
-    image: 'musicKaraoke',
-  },
-  {
-    title: 'Live music',
-    note: 'Local bands, close quarters.',
-    image: 'stickerWall',
-  },
-  {
-    title: 'Drag + burlesque',
-    note: 'The room turns into a stage.',
-    image: 'insideFlyers',
-  },
-  {
-    title: 'A photo booth',
-    note: 'Vintage, and it reportedly still works.',
-    image: 'photobooth',
-  },
-  {
-    title: 'Movies on the wall',
-    note: 'Projected, not curated.',
-    image: 'patioNight',
-  },
-] as const
+export const reported = ['DJs', 'Karaoke', 'Live music', 'Drag', 'Burlesque', 'Photo booth', 'Movies out back'] as const

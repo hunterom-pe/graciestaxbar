@@ -2,22 +2,27 @@
 
 @theme {
   --color-coal: #141010;
-  --color-coal-2: #1e1716;
+  --color-coal-2: #201818;
   --color-red: #8c252c;
-  --color-red-hot: #d6323d;
-  --color-pink: #d98ea3;
-  --color-pink-soft: #ecc4cf;
-  --color-bone: #f0e6d8;
-  --color-paper: #e9dcc8;
-  --color-orange: #e4572e;
+  --color-red-hot: #e0263a;
+  --color-pink: #ff5fa8;
+  --color-blush: #f7c6d9;
+  --color-bone: #f3ebdd;
+  --color-paper: #ece2d1;
   --color-blue: #2b4bff;
-  --color-acid: #c6f23a;
-  --color-plum: #6b4e8e;
+  --color-lime: #c8f03c;
+  --color-orange: #ff6a1a;
+  --color-chrome: #c9cdd2;
 
-  --font-display: 'Anybody', 'Arial Narrow', Impact, sans-serif;
-  --font-sans: 'Instrument Sans', system-ui, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  /* Grotesk with a width axis: does the heavy lifting for labels + UI */
+  --font-sans: 'Bricolage Grotesque', system-ui, sans-serif;
+  /* Soft, wonky italic serif: the cute voice, and the wordmark */
+  --font-cute: 'Fraunces', Georgia, serif;
+  /* Used inside flyers, and the odd stretched moment */
+  --font-poster: 'Anybody', 'Arial Narrow', Impact, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  /* Ballpoint scrawl, for tiny captions only */
+  --font-scrawl: 'Reenie Beanie', 'Comic Sans MS', cursive;
 }
 
 @layer base {
@@ -29,18 +34,19 @@
     background: var(--color-coal);
     color: var(--color-bone);
     font-family: var(--font-sans);
+    font-variation-settings: 'opsz' 14;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
   section[id],
   footer[id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 4rem;
   }
   section[tabindex='-1']:focus {
     outline: none;
   }
   :focus-visible {
-    outline: 3px solid var(--color-acid);
+    outline: 3px solid var(--color-lime);
     outline-offset: 3px;
   }
   ::selection {
@@ -49,93 +55,10 @@
   }
 }
 
-/* ---------- Type system ---------- */
-/* One variable family, three voices: squeezed, regular, stretched. */
-.d-cond {
-  font-family: var(--font-display);
-  font-stretch: 50%;
-  font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: 0.012em;
-  text-transform: uppercase;
-}
-.d-mid {
-  font-family: var(--font-display);
-  font-stretch: 85%;
-  font-weight: 800;
-  line-height: 0.92;
-  text-transform: uppercase;
-}
-.d-wide {
-  font-family: var(--font-display);
-  font-stretch: 150%;
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-.label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-.serif-i {
-  font-family: var(--font-serif);
-  font-style: italic;
-  letter-spacing: -0.01em;
-}
-.outline-type {
-  color: transparent;
-  -webkit-text-stroke: 1.5px currentColor;
-}
-
-/* ---------- Textures ---------- */
-.grain::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.11;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.halftone {
-  background-image: radial-gradient(circle at center, rgb(20 16 16 / 0.2) 1.4px, transparent 1.6px);
-  background-size: 9px 9px;
-}
-.paper {
-  background-color: var(--color-paper);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
-}
-.tape {
-  position: absolute;
-  width: 4.5rem;
-  height: 1.4rem;
-  background: rgb(240 230 216 / 0.72);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.18);
-}
-
-/* ---------- Motion ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
-  transition-delay: var(--d, 0ms);
-}
-.reveal.in {
-  opacity: 1;
-  transform: none;
-}
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(0.35em);
+    transform: translateY(0.3em);
   }
   to {
     opacity: 1;
@@ -160,16 +83,202 @@
     transform: none;
   }
 }
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Custom classes live in the components layer so utilities can override them */
+@layer components {
+/* ---------- Type voices ---------- */
+.t-cute {
+  font-family: var(--font-cute);
+  font-style: italic;
+  font-weight: 800;
+  font-variation-settings:
+    'SOFT' 100,
+    'WONK' 1,
+    'opsz' 144;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+}
+.t-block {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-variation-settings: 'opsz' 96;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.88;
+}
+.t-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-stretch: 85%;
+  font-variation-settings: 'opsz' 14;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.t-scrawl {
+  font-family: var(--font-scrawl);
+  font-size: 2.1rem;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Textures ---------- */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.halftone {
+  background-image: radial-gradient(circle at center, rgb(20 16 16 / 0.22) 1.3px, transparent 1.6px);
+  background-size: 8px 8px;
+}
+.paper {
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+.tape {
+  position: absolute;
+  z-index: 5;
+  width: 4.75rem;
+  height: 1.35rem;
+  background: rgb(243 235 221 / 0.7);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  pointer-events: none;
+}
+.chrome-text {
+  background: linear-gradient(180deg, #ffffff 0%, #c9cdd2 38%, #6f757c 52%, #e6e9ec 64%, #9aa0a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Photobooth / print frame */
+.print {
+  background: var(--color-bone);
+  padding: 0.5rem 0.5rem 1.75rem;
+  box-shadow: 0 10px 24px -10px rgb(0 0 0 / 0.55);
+}
+.booth {
+  background: #0b0909;
+  padding: 0.4rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* ---------- Interaction ---------- */
+/* Photos straighten and "flash" on hover */
+.snap {
+  transition:
+    rotate 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+    translate 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.snap:hover {
+  rotate: 0deg;
+  translate: 0 -4px;
+}
+.flash {
+  position: relative;
+}
+.flash::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  transition: opacity 0.5s ease;
+}
+.flash:hover::after {
+  opacity: 0.55;
+  transition-duration: 0.05s;
+}
+
+/* Chunky button with a hard offset shadow that "presses" */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.4rem;
+  border: 2px solid var(--color-coal);
+  box-shadow: 4px 4px 0 var(--color-coal);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.2s ease;
+}
+.btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-coal);
+}
+.btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--color-coal);
+}
+
+/* ---------- Motion ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
 .a-rise {
-  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
 }
 .a-fade {
-  animation: fade 1s ease both;
+  animation: fade 0.9s ease both;
   animation-delay: var(--d, 0ms);
 }
 .a-photo {
-  animation: photo-in 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: photo-in 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.a-drop {
+  animation: drop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .no-scrollbar {
@@ -179,17 +288,16 @@
   display: none;
 }
 
-/* Underline that draws in on hover */
-.link-line {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 1px;
-  transition: background-size 0.3s ease;
+.u-link {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
 }
-.link-line:hover {
-  background-size: 100% 0.5em;
-  background-image: linear-gradient(var(--color-red-hot), var(--color-red-hot));
+.u-link:hover {
+  text-decoration-color: var(--color-pink);
+}
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -203,7 +311,11 @@
   }
   .a-rise,
   .a-fade,
-  .a-photo {
+  .a-photo,
+  .a-drop {
+    animation: none;
+  }
+  .marquee-track {
     animation: none;
   }
   * {
