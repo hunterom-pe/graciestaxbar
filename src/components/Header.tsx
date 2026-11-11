@@ -94,7 +94,7 @@ export function Header() {
         }`}
       >
         <div className="flex h-16 items-center justify-between px-4 md:px-8">
-          <a href="#top" aria-label={`${site.name}, back to top`} className="relative z-[70] text-bone">
+          <a href="#top" aria-label={`${site.name}, back to top`} className={`relative z-[70] max-lg:-my-2 max-lg:py-2 ${open ? 'text-coal' : 'text-bone'}`}>
             <Wordmark />
           </a>
 

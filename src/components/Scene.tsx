@@ -43,7 +43,7 @@ export function Scene() {
             </figure>
 
             {/* Tall print hanging over the seam into the pink */}
-            <figure className="relative z-20 col-span-6 col-start-7 -mb-24 -mt-16 md:col-span-4 md:col-start-9 lg:col-span-4 lg:col-start-9 lg:-mb-40 lg:mt-24">
+            <figure className="relative z-20 col-span-6 col-start-7 -mb-24 -mt-[5.5rem] md:col-span-4 md:-mt-16 md:col-start-9 lg:col-span-4 lg:col-start-9 lg:-mb-40 lg:mt-24">
               <div className="snap print rotate-3">
                 <span className="tape -top-2 left-1/2 -translate-x-1/2 -rotate-3" />
                 <Photo id="tattooBar" sizes="(min-width: 1024px) 30vw, 48vw" className="aspect-[3/4] w-full" />
@@ -56,9 +56,9 @@ export function Scene() {
       {/* OUT BACK: pink */}
       <section id="outback" aria-label="Out back" className="relative bg-coal">
         <Edge color="#FF5FA8" />
-        <div className="relative bg-pink px-4 pb-10 pt-4 md:px-8 lg:pb-16">
+        <div className="relative bg-pink px-4 pb-5 pt-4 md:px-8 md:pb-10 lg:pb-16">
           <div className="mx-auto grid max-w-[90rem] grid-cols-12 gap-3 lg:gap-6">
-            <figure className="flash relative col-span-12 mt-10 lg:col-span-7 lg:mt-0">
+            <figure className="flash relative col-span-12 mt-8 md:mt-10 lg:col-span-7 lg:mt-0">
               <Tag className="-top-3 left-3 bg-coal text-pink">Out Back</Tag>
               <Photo
                 id="patioNight"

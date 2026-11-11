@@ -42,7 +42,7 @@ export function FindUs() {
             <div>
               <dt className="t-mono text-bone/65">Phone</dt>
               <dd className="mt-1">
-                <a href={site.phone.href} className="t-label u-link text-base">
+                <a href={site.phone.href} className="t-label u-link text-base max-lg:-my-3 max-lg:inline-block max-lg:py-3">
                   {site.phone.display}
                 </a>
               </dd>
@@ -50,7 +50,7 @@ export function FindUs() {
             <div>
               <dt className="t-mono text-bone/65">Menu</dt>
               <dd className="mt-1">
-                <a href={site.links.official.url} target="_blank" rel="noreferrer" className="t-label u-link break-all text-sm lg:text-base">
+                <a href={site.links.official.url} target="_blank" rel="noreferrer" className="t-label u-link break-all text-sm max-lg:-my-3 max-lg:inline-block max-lg:py-3 lg:text-base">
                   {site.links.official.label} ↗
                 </a>
               </dd>

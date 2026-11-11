@@ -20,8 +20,8 @@ function Featured({ event, index }: { event: BarEvent; index: number }) {
             <Sticker kind="star" text="THIS WEEK" r={-10} className="absolute -left-3 -top-5 z-10 w-16 lg:-left-6 lg:-top-7 lg:w-24" />
           )}
         </div>
-        <h3 className="t-block mt-3 text-[1.15rem] text-coal lg:mt-4 lg:text-[1.75rem]">{event.title}</h3>
-        <p className="t-mono mt-0.5 text-coal/80">
+        <h3 className="t-block mt-3 text-[clamp(1.1rem,5.6vw,1.4rem)] text-coal lg:mt-4 lg:text-[1.75rem]">{event.title}</h3>
+        <p className="t-mono mt-1 text-[0.75rem] font-medium tracking-[0.06em] text-coal lg:mt-0.5 lg:text-[0.6875rem] lg:font-normal lg:tracking-[0.12em] lg:text-coal/80">
           <time dateTime={event.start}>
             {d.weekday} {d.month} {d.day} · {d.time}
           </time>
@@ -37,7 +37,7 @@ export function Events() {
   const hasSamples = featured.some((e) => e.sample)
 
   return (
-    <section id="events" aria-labelledby="events-title" className="relative bg-pink px-4 pb-16 pt-6 text-coal md:px-8 lg:pb-24 lg:pt-10">
+    <section id="events" aria-labelledby="events-title" className="relative bg-pink px-4 pb-12 pt-3 text-coal md:px-8 md:pb-16 md:pt-6 lg:pb-24 lg:pt-10">
       <div className="mx-auto grid max-w-[90rem] gap-x-10 gap-y-6 lg:grid-cols-12">
         <div className="flex flex-wrap items-end justify-between gap-4 lg:col-span-4 lg:flex-col lg:items-start lg:justify-start lg:pt-16">
           <h2 id="events-title" className="leading-none">
