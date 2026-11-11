@@ -13,9 +13,11 @@
  *   3. For real flyer art, set `flyer` to an image path in /public and
  *      the generated poster is replaced by the image.
  *
- * Upcoming vs. past is worked out from the dates, and anything in the
- * next seven days is tagged "this week". This array is the only thing a
- * future CMS or calendar feed needs to produce.
+ * The homepage features only the next FEATURED_COUNT upcoming events
+ * (past ones drop off automatically); the full calendar lives on the
+ * bar's own channels. Anything in the next seven days is tagged "this
+ * week". This array is the only thing a future CMS or feed needs to
+ * produce.
  */
 
 export type PosterKind = 'rings' | 'karaoke' | 'chrome' | 'checker' | 'slash' | 'beam' | 'stack'
@@ -56,7 +58,6 @@ export const events: BarEvent[] = [
     id: 'patio-selectors',
     title: 'Patio Selectors',
     start: inDays(2, '21:00'),
-    description: 'All vinyl. Bring a record.',
     recurring: 'Weekly',
     poster: 'rings',
     sample: true,
@@ -65,53 +66,14 @@ export const events: BarEvent[] = [
     id: 'karaoke',
     title: 'Karaoke',
     start: inDays(5, '20:00'),
-    description: 'Ballads, bangers, both.',
     recurring: 'Weekly',
     poster: 'karaoke',
     sample: true,
   },
-  {
-    id: 'sad-disco',
-    title: 'Sad Disco',
-    start: inDays(9, '22:00'),
-    description: 'Slow songs, fast songs, glitter.',
-    poster: 'chrome',
-    sample: true,
-  },
-  {
-    id: 'backyard-flea',
-    title: 'Backyard Flea',
-    start: inDays(12, '16:00'),
-    description: 'Zines, prints, thrifted stuff.',
-    poster: 'checker',
-    sample: true,
-  },
-  {
-    id: 'pink-room-revue',
-    title: 'Pink Room Revue',
-    start: inDays(16, '21:30'),
-    description: 'Drag + burlesque.',
-    poster: 'slash',
-    sample: true,
-  },
-  {
-    id: 'b-movies',
-    title: 'B-Movies Out Back',
-    start: inDays(24, '19:30'),
-    description: 'Double feature on the wall.',
-    recurring: 'Monthly',
-    poster: 'beam',
-    sample: true,
-  },
-  {
-    id: 'no-wave',
-    title: 'No Wave Night',
-    start: inDays(-9, '21:00'),
-    description: 'Post-punk on the patio.',
-    poster: 'stack',
-    sample: true,
-  },
 ]
+
+/** How many posters the homepage features. Keep it at 2 (3 at most). */
+export const FEATURED_COUNT = 2
 
 const DAY = 86_400_000
 

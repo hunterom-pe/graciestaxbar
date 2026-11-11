@@ -126,7 +126,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className={`t-label relative z-[70] -mr-1 flex h-11 items-center rounded-full px-5 transition-colors lg:hidden ${
+            className={`t-label relative z-[70] -mr-1 flex h-11 items-center rounded-full px-4 min-[360px]:px-5 transition-colors lg:hidden ${
               open ? 'bg-coal text-bone' : 'bg-bone text-coal'
             }`}
           >

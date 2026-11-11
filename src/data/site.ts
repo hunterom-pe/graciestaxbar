@@ -55,13 +55,5 @@ export const nav = [
   { label: 'Inside', href: '#inside' },
   { label: 'Out Back', href: '#outback' },
   { label: 'Events', href: '#events' },
-  { label: 'Food + Drink', href: '#food' },
   { label: 'Find Us', href: '#find' },
 ] as const
-
-/**
- * Things local press has reported happening at Gracie's. Shown only as
- * short tags (marquee + stickers), never as an official schedule.
- * Remove anything the owners don't confirm.
- */
-export const reported = ['DJs', 'Karaoke', 'Live music', 'Drag', 'Burlesque', 'Photo booth', 'Movies out back'] as const

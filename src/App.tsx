@@ -1,27 +1,23 @@
 import { Events } from './components/Events'
 import { FindUs } from './components/FindUs'
-import { FoodDrink } from './components/FoodDrink'
-import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Inside } from './components/Inside'
-import { Marquee } from './components/Marquee'
-import { OutBack } from './components/OutBack'
+import { Scene } from './components/Scene'
 
+/**
+ * Four moments, one continuous page:
+ * 1. Hero  2. Inside → Out Back  3. Events (two posters)  4. Find us + footer
+ */
 export default function App() {
   return (
     <div className="grain">
       <Header />
       <main id="main">
         <Hero />
-        <Marquee />
-        <Inside />
-        <OutBack />
+        <Scene />
         <Events />
-        <FoodDrink />
-        <FindUs />
       </main>
-      <Footer />
+      <FindUs />
     </div>
   )
 }

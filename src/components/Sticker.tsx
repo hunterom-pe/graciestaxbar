@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react'
  * Hand-cut sticker graphics, drawn in SVG. Decorative only: always
  * aria-hidden, never carry information the page needs.
  */
-export type StickerKind = 'star' | 'heart' | 'bolt' | 'daisy' | 'swirl' | 'arrow'
+export type StickerKind = 'star' | 'heart' | 'daisy'
 
 interface StickerProps {
   kind: StickerKind
@@ -20,7 +20,6 @@ const BONE = '#F3EBDD'
 const COAL = '#141010'
 const PINK = '#FF5FA8'
 const LIME = '#C8F03C'
-const RED = '#E0263A'
 
 function starPoints(cx: number, cy: number, spikes: number, outer: number, inner: number) {
   const pts: string[] = []
@@ -73,13 +72,6 @@ export function Sticker({ kind, className = '', text, r = 0, style }: StickerPro
           <path d="M34 30c-6 2-9 8-8 14" stroke={BONE} strokeWidth="5" strokeLinecap="round" fill="none" opacity=".8" />
         </svg>
       )
-    case 'bolt':
-      return (
-        <svg viewBox="0 0 80 120" {...common}>
-          <polygon points="46,2 4,68 34,68 24,118 76,44 44,44 58,2" fill={BONE} />
-          <polygon points="45,10 13,63 41,63 33,104 68,49 37,49 50,10" fill={RED} />
-        </svg>
-      )
     case 'daisy':
       return (
         <svg viewBox="0 0 120 120" {...common}>
@@ -100,31 +92,6 @@ export function Sticker({ kind, className = '', text, r = 0, style }: StickerPro
           <circle cx="54" cy="56" r="2.5" fill={COAL} />
           <circle cx="66" cy="56" r="2.5" fill={COAL} />
           <path d="M52 65q8 7 16 0" stroke={COAL} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        </svg>
-      )
-    case 'swirl':
-      return (
-        <svg viewBox="0 0 160 60" {...common}>
-          <path
-            d="M6 40c20-30 40-30 46-10s-14 26-12 8 30-30 52-14 6 30-6 18 22-34 62-26"
-            stroke={PINK}
-            strokeWidth="5"
-            fill="none"
-            strokeLinecap="round"
-          />
-        </svg>
-      )
-    case 'arrow':
-      return (
-        <svg viewBox="0 0 120 80" {...common} className={common.className.replace(/drop-shadow\S+/, '')}>
-          <path
-            d="M6 14c30-8 70 0 88 40"
-            stroke="currentColor"
-            strokeWidth="3.5"
-            fill="none"
-            strokeLinecap="round"
-          />
-          <path d="M80 50l15 8 4-17" stroke="currentColor" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )
   }

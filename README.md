@@ -8,7 +8,8 @@ An unsolicited redesign concept for [Gracie's Tax Bar](https://graciestaxbar.com
 
 - GitHub: [hunterom-pe/graciestaxbar](https://github.com/hunterom-pe/graciestaxbar)
 - Default branch: `main`
-- Tag `v1-concept`: the first (tax-form) direction, kept as a checkpoint. `git checkout v1-concept` to see it.
+- Netlify: https://gracies-tax-bar.netlify.app (deploys from `main`)
+- Checkpoints: `v1-concept` (first, tax-form direction) and `v2-zine` (seven-section pink zine). `git checkout <tag>` to see either.
 
 ## Run it locally
 
@@ -26,48 +27,48 @@ npm run preview  # serve the production build locally
 
 Stack: React 19, TypeScript, Vite, Tailwind CSS v4, lucide-react. No animation library; motion is CSS plus one small IntersectionObserver wrapper.
 
-## Art direction (v2)
+## Art direction (v3)
 
-Indie sleaze × queer-punk zine × DIY nightlife × pink dive bar. Say less, show more: the page is mostly photography, flyers and stickers, with labels and practical details as the only copy.
+Indie sleaze × queer-punk zine × alternative nightlife. One short, continuous page in **four moments**, about 60% shorter than v2 at the same viewport sizes:
 
-- **Type:** Fraunces italic (soft + wonky axes) for the wordmark and cute moments; Bricolage Grotesque, condensed, for labels and UI; Anybody inside the flyers; IBM Plex Mono for utility; Reenie Beanie for the odd ballpoint caption.
-- **Colour:** near-black, deep red, hot pink, warm ivory. Lime, electric blue, orange, plum and chrome appear only in flyers and stickers.
-- **Graphic kit:** photobooth strip, taped prints, film strip, torn-paper section edges, SVG stickers, halftone, grain.
-- **Hover:** photos straighten and flash; buttons press into their offset shadow; flyers lift.
-- **Motion:** respects `prefers-reduced-motion` (the marquee stops, reveals and drops are disabled).
+1. **Hero:** red-lit photo, the wordmark, "Phoenix, AZ", and two actions: Events and Directions.
+2. **Inside → Out Back:** one photo composition. Dark red runs into pink; a photobooth strip and tilted prints overlap the seams. Labels only.
+3. **Events:** exactly two featured flyers (`FEATURED_COUNT` in `src/data/events.ts`, 3 maximum), name + date + time, one "All events" link, a one-line demo note.
+4. **Find us:** address, directions, Instagram, hours, phone, menu link, footer nav, disclaimer and photo credits in one block.
+
+No taglines, no descriptive paragraphs, no tax-form styling, no activities list, no past events.
+
+- **Type:** Fraunces italic (soft + wonky axes) for the wordmark and a few headings; condensed Bricolage Grotesque for labels and UI; Anybody inside the flyers; IBM Plex Mono for utility text.
+- **Colour:** near-black, deep red, hot pink, warm ivory. Lime, electric blue and orange appear only in flyers and stickers.
+- **Graphic kit:** photobooth strip, taped prints, torn-paper edges, three SVG stickers (star, heart, daisy).
+- **Motion:** short entrance fades and sticker drops; photos straighten and flash on hover; buttons press. All entrance animation is off under `prefers-reduced-motion`.
 
 ## Where things live
 
 ```
 src/
   data/
-    site.ts       business facts, links, nav, press-reported activities (marquee)
+    site.ts       business facts, links, nav
     images.ts     every photo: file, alt text, credit, placeholder flag, focal point
-    events.ts     event listings, upcoming/past + "this week" logic
+    events.ts     event data, FEATURED_COUNT, upcoming + "this week" logic
   components/
     Header.tsx    fixed nav + full-screen pink mobile menu
     Wordmark.tsx  small header lockup
-    Hero.tsx      red-lit photo, wordmark, photobooth strip, stickers
-    Marquee.tsx   ticker of press-reported activities + address
-    Inside.tsx    photo collage
-    OutBack.tsx   pink patio collage
-    FilmStrip.tsx 35mm strip of show photos, leads into Events
-    Events.tsx    poster wall (desktop) / swipe rail (mobile) / past list
-    Poster.tsx    the seven sample flyers, drawn in SVG
-    FoodDrink.tsx photos + menu links
-    FindUs.tsx    address, directions, hours, phone, Instagram
-    Footer.tsx    links, concept disclaimer, photo credits
-    Sticker.tsx   SVG stickers (star, heart, bolt, daisy, arrow, swirl)
-    Edge.tsx      torn-paper section edge
+    Hero.tsx      moment 1
+    Scene.tsx     moment 2: inside → out back photo composition
+    Events.tsx    moment 3: two featured flyers
+    Poster.tsx    SVG sample flyers (seven designs available)
+    FindUs.tsx    moment 4: visit info + footer
+    Sticker.tsx   SVG stickers
+    Edge.tsx      torn-paper edge
     Photo.tsx     responsive image wrapper driven by images.ts
-    Reveal.tsx    scroll-in fade
   index.css       design tokens (@theme), type voices, textures, motion
 public/images/    optimized WebP photos, 800w and 1600w of each
 ```
 
 ## Replacing the stock photos
 
-Every photo is temporary. All 23 are free-licence Unsplash images, credited in the footer and in `src/data/images.ts`. None of them show Gracie's.
+Every photo is temporary. All eight are free-licence Unsplash images, credited in the footer and in `src/data/images.ts`. None of them show Gracie's.
 
 To swap one for a real photo:
 
@@ -82,16 +83,14 @@ Once every image is real, also remove the stock-photo sentence from the footer d
 
 ## Updating events
 
-All seven listings in `src/data/events.ts` are made up. To publish real ones:
+The two listings in `src/data/events.ts` are made up. To publish real ones:
 
 1. Replace the array entries. `start` is an ISO date-time with the Phoenix offset, e.g. `"2027-01-15T21:00:00-07:00"`.
-2. Set `sample: false`. When no entry is a sample, the lime "Demo" note and the per-flyer "Sample" tags go away.
-3. For real flyer art, set `flyer: "/flyers/whatever.webp"`; the image replaces the generated SVG poster.
+2. Set `sample: false`. When the featured events aren't samples, the lime "Demo" note and the flyer "Sample" tags go away.
+3. For real flyer art, set `flyer: "/flyers/whatever.webp"`; the image replaces the generated SVG poster. Otherwise pick one of the seven `poster` designs in `Poster.tsx`.
 4. Only fill in `admission` and `link` when they're confirmed.
 
-Events move to "Previously" automatically once they end, and anything starting within seven days gets a "This week" sticker. The sample entries use dates relative to today so the demo never looks stale; real entries should use fixed dates.
-
-The component only needs an array of `BarEvent` objects, so a CMS, Google Calendar feed or a JSON file can replace the hard-coded list later without touching the UI.
+The homepage shows the next `FEATURED_COUNT` (2) upcoming events; past events drop off automatically and anything within seven days gets a "This week" sticker. The full calendar belongs on the bar's Instagram or a future CMS; this array is the only thing a feed needs to produce.
 
 ## What still needs confirming with the bar
 
@@ -104,14 +103,13 @@ The official site could not be loaded while this was built (its TLS certificate 
 | Hours | Listings disagree on opening time and on Mondays; all say 2 AM close. The site says "Open late · till 2 AM" and tells people to check |
 | Instagram, @graciestaxbar | Handle from press photo credits; link not confirmed |
 | Kitchen and full bar | Reported by local press. No menu items or prices are shown |
-| DJs, karaoke, live music, drag, burlesque, photo booth, movies out back | Reported by local press; shown only as marquee tags |
 | Interior and patio descriptions | From the project brief |
 
 No parking details, cover charges, age policies or specials are stated anywhere.
 
 ## Deploying (GitHub → Netlify)
 
-The code is on GitHub. It is **not yet connected to Netlify**; that step is done from your Netlify account.
+The repo is connected to Netlify at https://gracies-tax-bar.netlify.app; pushes to `main` deploy automatically.
 
 ### Netlify settings
 
@@ -130,7 +128,7 @@ These are in `netlify.toml`, so Netlify picks them up on its own when the repo i
 
 There's no SPA redirect rule. The site is a single page and all navigation is `#anchor` links, so nothing needs rewriting to `index.html`. Add one only if real routes (e.g. `/events`) are introduced later.
 
-### Connecting the repo (one-time, manual)
+### Connecting the repo (one-time, already done)
 
 1. Netlify → **Add new site** → **Import an existing project** → **GitHub**.
 2. Authorize Netlify for the `hunterom-pe/graciestaxbar` repo.
@@ -154,7 +152,7 @@ The site sends `noindex, nofollow` three ways: a `<meta name="robots">` tag, the
 - `noindex, nofollow` meta tag, `X-Robots-Tag` header, `robots.txt`
 - "stock photo" tags on images, a stock-photo credit in the hero, and footer photo credits
 - "Demo" note in Events and a "Sample" tag on every made-up flyer
-- "Still need confirming" note under hours and phone
+- "Not confirmed by the bar" note on hours and phone (in the footer disclaimer)
 
 ## Remaining manual steps
 

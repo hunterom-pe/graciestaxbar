@@ -21,8 +21,6 @@
   /* Used inside flyers, and the odd stretched moment */
   --font-poster: 'Anybody', 'Arial Narrow', Impact, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  /* Ballpoint scrawl, for tiny captions only */
-  --font-scrawl: 'Reenie Beanie', 'Comic Sans MS', cursive;
 }
 
 @layer base {
@@ -93,11 +91,6 @@
     transform: none;
   }
 }
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 /* Custom classes live in the components layer so utilities can override them */
 @layer components {
@@ -139,12 +132,6 @@
   text-transform: uppercase;
   line-height: 1.4;
 }
-.t-scrawl {
-  font-family: var(--font-scrawl);
-  font-size: 2.1rem;
-  line-height: 0.9;
-  letter-spacing: 0.01em;
-}
 
 /* ---------- Textures ---------- */
 .grain::after {
@@ -157,14 +144,6 @@
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.halftone {
-  background-image: radial-gradient(circle at center, rgb(20 16 16 / 0.22) 1.3px, transparent 1.6px);
-  background-size: 8px 8px;
-}
-.paper {
-  background-color: var(--color-paper);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
-}
 .tape {
   position: absolute;
   z-index: 5;
@@ -173,12 +152,6 @@
   background: rgb(243 235 221 / 0.7);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
   pointer-events: none;
-}
-.chrome-text {
-  background: linear-gradient(180deg, #ffffff 0%, #c9cdd2 38%, #6f757c 52%, #e6e9ec 64%, #9aa0a6 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* Photobooth / print frame */
@@ -247,18 +220,6 @@
 }
 
 /* ---------- Motion ---------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-  transition-delay: var(--d, 0ms);
-}
-.reveal.in {
-  opacity: 1;
-  transform: none;
-}
 .a-rise {
   animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   animation-delay: var(--d, 0ms);
@@ -273,12 +234,6 @@
 .a-drop {
   animation: drop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both;
   animation-delay: var(--d, 0ms);
-}
-.marquee-track {
-  animation: marquee 38s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 .no-scrollbar {
@@ -304,18 +259,10 @@
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .a-rise,
   .a-fade,
   .a-photo,
   .a-drop {
-    animation: none;
-  }
-  .marquee-track {
     animation: none;
   }
   * {
