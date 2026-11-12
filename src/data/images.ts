@@ -20,7 +20,7 @@ export type ImageId =
   | 'discoBall'
   | 'punkSinger'
   | 'cocktails'
-  | 'flashCouple'
+  | 'tots'
   | 'tattooBar'
 
 export interface SiteImage {
@@ -113,14 +113,14 @@ export const images: Record<ImageId, SiteImage> = {
   },
 
 
-  flashCouple: {
-    id: 'flashCouple',
-    src: file('flash-couple'),
-    alt: 'Point-and-shoot flash photo of two friends outdoors at night under string lights.',
-    credit: unsplash('Brooke Balentine', '3clMJdv4g9M'),
+  tots: {
+    id: 'tots',
+    // Supplied photo, 548px wide: one file serves both sizes (no upscaling).
+    src: { sm: '/images/tots.webp', lg: '/images/tots.webp' },
+    alt: 'A bowl of golden, crispy tater tots.',
     placeholder: true,
-    focal: '40% 50%',
   },
+
   tattooBar: {
     id: 'tattooBar',
     src: file('tattoo-bar'),

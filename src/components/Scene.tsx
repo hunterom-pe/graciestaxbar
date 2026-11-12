@@ -1,7 +1,7 @@
 import type { ImageId } from '../data/images'
 import { Edge } from './Edge'
 import { Photo } from './Photo'
-import { Sticker } from './Sticker'
+import { Mascot } from './Mascot'
 
 /** Small pill label stuck onto a photo */
 function Tag({ children, className = '' }: { children: string; className?: string }) {
@@ -70,9 +70,9 @@ export function Scene() {
             <figure className="relative col-span-7 -mt-14 md:col-span-5 lg:col-span-4 lg:col-start-8 lg:mt-48">
               <div className="snap print -rotate-3">
                 <span className="tape -top-2 left-6 -rotate-6" />
-                <Photo id="flashCouple" sizes="(min-width: 1024px) 30vw, 56vw" className="aspect-[4/3] w-full" />
+                <Photo id="tots" sizes="(min-width: 1024px) 30vw, 56vw" className="aspect-[4/3] w-full" />
               </div>
-              <Sticker kind="daisy" r={-12} className="absolute -right-6 -top-8 w-14 lg:-right-10 lg:w-20" />
+              <Mascot className="absolute -right-6 -top-8 w-14 -rotate-12 lg:-right-10 lg:w-20" />
             </figure>
           </div>
         </div>

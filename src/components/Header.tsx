@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { nav, site } from '../data/site'
-import { Sticker } from './Sticker'
+import { Mascot } from './Mascot'
 import { Wordmark } from './Wordmark'
 
 export function Header() {
@@ -145,7 +145,7 @@ export function Header() {
         hidden={!open}
         className="fixed inset-0 z-[45] flex flex-col overflow-y-auto bg-pink px-4 pb-8 pt-24 text-coal lg:hidden"
       >
-        <Sticker kind="daisy" className="a-drop absolute right-5 top-24 w-16" r={12} />
+        <Mascot className="a-drop absolute right-5 top-24 w-16 rotate-12" />
         <nav aria-label="Mobile" className="relative">
           <ul>
             {nav.map((item, i) => (
