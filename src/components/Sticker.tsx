@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react'
  * Hand-cut sticker graphics, drawn in SVG. Decorative only: always
  * aria-hidden, never carry information the page needs.
  */
-export type StickerKind = 'star' | 'heart' | 'daisy'
+export type StickerKind = 'star' | 'daisy'
 
 interface StickerProps {
   kind: StickerKind
@@ -18,7 +18,7 @@ interface StickerProps {
 
 const BONE = '#F3EBDD'
 const COAL = '#141010'
-const PINK = '#DB2B36'
+const RED = '#DB2B36'
 const LIME = '#C8F03C'
 
 function starPoints(cx: number, cy: number, spikes: number, outer: number, inner: number) {
@@ -58,20 +58,6 @@ export function Sticker({ kind, className = '', text, r = 0, style }: StickerPro
           )}
         </svg>
       )
-    case 'heart':
-      return (
-        <svg viewBox="0 0 120 110" {...common}>
-          <path
-            d="M60 104C24 80 4 58 6 34 8 14 24 4 40 6c10 1 16 7 20 15 4-8 10-14 20-15 16-2 32 8 34 28 2 24-18 46-54 70Z"
-            fill={BONE}
-          />
-          <path
-            d="M60 94C30 74 14 56 15 36 16 21 27 13 40 14c9 1 15 8 20 18 5-10 11-17 20-18 13-1 24 7 25 22 1 20-15 38-45 58Z"
-            fill={PINK}
-          />
-          <path d="M34 30c-6 2-9 8-8 14" stroke={BONE} strokeWidth="5" strokeLinecap="round" fill="none" opacity=".8" />
-        </svg>
-      )
     case 'daisy':
       return (
         <svg viewBox="0 0 120 120" {...common}>
@@ -88,7 +74,7 @@ export function Sticker({ kind, className = '', text, r = 0, style }: StickerPro
               transform={`rotate(${i * 36} 60 60)`}
             />
           ))}
-          <circle cx="60" cy="60" r="18" fill={PINK} stroke={COAL} strokeWidth="3" />
+          <circle cx="60" cy="60" r="18" fill={RED} stroke={COAL} strokeWidth="3" />
           <circle cx="54" cy="56" r="2.5" fill={COAL} />
           <circle cx="66" cy="56" r="2.5" fill={COAL} />
           <path d="M52 65q8 7 16 0" stroke={COAL} strokeWidth="2.5" fill="none" strokeLinecap="round" />

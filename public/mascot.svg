@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Gracie's heart mascot: a smirking red heart with an arrow through it">
+  <!--
+    Gracie's Tax Bar — heart mascot (Hunter Made concept)
+    Flat, three-colour flash style: red #DB2B36, black #141010, cream #F3EBDD.
+    The cream outer border is the sticker die-cut, so it reads on dark and light.
+  -->
+  <defs>
+    <!-- hand-drawn heart: slightly lopsided on purpose -->
+    <path id="heart" d="M100 63
+      C 93 45, 76 34, 57 37
+      C 35 41, 23 63, 29 87
+      C 36 114, 64 140, 98 167
+      C 133 141, 163 115, 170 88
+      C 177 62, 164 39, 142 36
+      C 123 34, 107 45, 100 63 Z"/>
+    <!-- arrowhead and fletching -->
+    <path id="head" d="M184 26 L 152.5 37.5 L 160.5 46.5 L 172 56 Z"/>
+    <path id="featherA" d="M29 162 L 33 176.5 L 55 157 L 51 142.5 Z"/>
+    <path id="featherB" d="M29 162 L 15.5 157 L 37.5 137.5 L 51 142.5 Z"/>
+  </defs>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- sticker backing: cream die-cut border around the whole silhouette -->
+    <g fill="#F3EBDD" stroke="#F3EBDD" stroke-width="20">
+      <line x1="30" y1="161" x2="166" y2="42"/>
+      <use href="#heart"/>
+      <use href="#head"/>
+      <use href="#featherA"/>
+      <use href="#featherB"/>
+    </g>
+
+    <!-- arrow shaft, behind the heart: black casing, cream wood -->
+    <line x1="34" y1="157" x2="162" y2="45" stroke="#141010" stroke-width="10"/>
+    <line x1="34" y1="157" x2="162" y2="45" stroke="#F3EBDD" stroke-width="3.5"/>
+
+    <!-- fletching -->
+    <g fill="#F3EBDD" stroke="#141010" stroke-width="4">
+      <use href="#featherA"/>
+      <use href="#featherB"/>
+    </g>
+    <path d="M38 158 l 4 7 M45 152 l 4 7 M33 151 l -6 -2 M40 145 l -6 -2" stroke="#141010" stroke-width="2.5" fill="none"/>
+
+    <!-- arrowhead -->
+    <use href="#head" fill="#F3EBDD" stroke="#141010" stroke-width="4.5"/>
+    <path d="M163 46 L 178 31" stroke="#141010" stroke-width="2.5"/>
+
+    <!-- the heart -->
+    <use href="#heart" fill="#DB2B36" stroke="#141010" stroke-width="7"/>
+
+    <!-- flat tattoo-flash highlight + a little whip shading -->
+    <path d="M56 50 C 46 54, 40 64, 41 75" stroke="#F3EBDD" stroke-width="6" fill="none"/>
+    <circle cx="44" cy="85" r="3" fill="#F3EBDD"/>
+    <path d="M140 132 l 8 -9 M131 141 l 9 -9 M122 149 l 8 -8" stroke="#141010" stroke-width="3.5" fill="none"/>
+
+    <!-- face -->
+    <!-- eyes: cream whites, side-eye pupils, heavy red lids -->
+    <ellipse cx="79" cy="97" rx="11" ry="12" fill="#F3EBDD" stroke="#141010" stroke-width="4"/>
+    <ellipse cx="119" cy="95" rx="11" ry="12" fill="#F3EBDD" stroke="#141010" stroke-width="4"/>
+    <circle cx="84" cy="100" r="5.2" fill="#141010"/>
+    <circle cx="124" cy="98" r="5.2" fill="#141010"/>
+    <path d="M66 95 Q 79 89 92 94 L 92 82 L 66 82 Z" fill="#DB2B36"/>
+    <path d="M106 94 Q 119 87 132 91 L 132 80 L 106 80 Z" fill="#DB2B36"/>
+    <path d="M67 95 Q 79 89 91 94" stroke="#141010" stroke-width="4.5" fill="none"/>
+    <path d="M107 94 Q 119 87 131 91" stroke="#141010" stroke-width="4.5" fill="none"/>
+
+    <!-- brows: one cocked up, one pulled down -->
+    <path d="M66 79 Q 78 68 91 76" stroke="#141010" stroke-width="5.5" fill="none"/>
+    <path d="M108 80 L 130 72" stroke="#141010" stroke-width="5.5" fill="none"/>
+
+    <!-- lopsided smirk with one fang -->
+    <path d="M85 121 Q 104 134 124 114 Q 107 125 85 121 Z" fill="#141010" stroke="#141010" stroke-width="4"/>
+    <path d="M110 124 L 116 121 L 113.5 128.5 Z" fill="#F3EBDD"/>
+    <path d="M127 113 Q 132 116 129 121" stroke="#141010" stroke-width="3.5" fill="none"/>
+  </g>
+</svg>

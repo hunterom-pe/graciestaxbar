@@ -1,0 +1,11 @@
+{
+  "name": "Gracie's Tax Bar",
+  "short_name": "Gracie's",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#141010",
+  "background_color": "#141010",
+  "display": "browser"
+}

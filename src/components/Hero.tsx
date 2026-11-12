@@ -1,7 +1,7 @@
 import { images } from '../data/images'
 import { site } from '../data/site'
 import { Photo } from './Photo'
-import { Sticker } from './Sticker'
+import { Mascot } from './Mascot'
 
 export function Hero() {
   const credit = images.heroInterior.credit
@@ -33,10 +33,8 @@ export function Hero() {
           >
             Tax Bar
           </span>
-          <Sticker
-            kind="heart"
-            r={14}
-            className="a-drop absolute -top-6 right-[8%] w-12 md:w-16 lg:-top-10 lg:w-24"
+          <Mascot
+            className="a-drop absolute -top-12 right-[2%] w-[4.75rem] rotate-[10deg] md:-top-14 md:w-24 lg:-top-20 lg:right-[4%] lg:w-36"
             style={{ ['--d' as string]: '650ms' }}
           />
         </h1>

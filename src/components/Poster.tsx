@@ -13,7 +13,6 @@ const C = {
   red: '#8C252C',
   hot: '#E0263A',
   pink: '#DB2B36',
-  blush: '#F7C6D9',
   bone: '#F3EBDD',
   orange: '#FF6A1A',
   blue: '#2B4BFF',

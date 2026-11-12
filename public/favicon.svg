@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#8C252C"/><rect x="6" y="6" width="52" height="52" fill="none" stroke="#F0E6D8" stroke-width="2"/><text x="32" y="46" text-anchor="middle" font-family="Impact, 'Arial Narrow', sans-serif" font-size="40" fill="#F0E6D8">G</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Gracie's heart mascot, simplified for 16–32px: fewer, fatter shapes -->
+  <defs>
+    <path id="h" d="M32 21 C29 13, 22 9.5, 15.5 10.5 C8 11.5, 4 19, 6 27 C8.5 36, 18 44, 31 54 C43 45, 53 36, 56 27 C58.5 19, 54 11, 47 10 C40 9.5, 34.5 13, 32 21 Z"/>
+    <path id="a" d="M63 1 L 49 6.5 L 57.5 15 Z"/>
+  </defs>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- cream die-cut border so it reads on dark tab bars -->
+    <g fill="#F3EBDD" stroke="#F3EBDD" stroke-width="7">
+      <line x1="6" y1="58" x2="54" y2="10"/>
+      <use href="#h"/>
+      <use href="#a"/>
+    </g>
+    <!-- arrow -->
+    <line x1="6" y1="58" x2="53" y2="11" stroke="#141010" stroke-width="5"/>
+    <path d="M3 52 L 9 58 L 3 61 Z M10 49 L 15 55" stroke="#141010" stroke-width="3" fill="#141010"/>
+    <use href="#a" fill="#141010" stroke="#141010" stroke-width="2.5"/>
+    <!-- heart -->
+    <use href="#h" fill="#DB2B36" stroke="#141010" stroke-width="3.5"/>
+    <!-- sly half-closed eyes -->
+    <path d="M20 29 h9 a4.5 4.5 0 0 1 -9 0 Z M34 28 h9 a4.5 4.5 0 0 1 -9 0 Z" fill="#141010"/>
+    <!-- smirk -->
+    <path d="M23 40 Q 31 45 40 37" stroke="#141010" stroke-width="3.5" fill="none"/>
+  </g>
+</svg>
