@@ -18,7 +18,7 @@ interface StickerProps {
 
 const BONE = '#F3EBDD'
 const COAL = '#141010'
-const PINK = '#FF5FA8'
+const PINK = '#FF3D2E'
 const LIME = '#C8F03C'
 
 function starPoints(cx: number, cy: number, spikes: number, outer: number, inner: number) {

@@ -55,7 +55,7 @@ export function Scene() {
 
       {/* OUT BACK: pink */}
       <section id="outback" aria-label="Out back" className="relative bg-coal">
-        <Edge color="#FF5FA8" />
+        <Edge color="#FF3D2E" />
         <div className="relative bg-pink px-4 pb-5 pt-4 md:px-8 md:pb-10 lg:pb-16">
           <div className="mx-auto grid max-w-[90rem] grid-cols-12 gap-3 lg:gap-6">
             <figure className="flash relative col-span-12 mt-8 md:mt-10 lg:col-span-7 lg:mt-0">

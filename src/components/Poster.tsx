@@ -12,7 +12,7 @@ const C = {
   coal: '#141010',
   red: '#8C252C',
   hot: '#E0263A',
-  pink: '#FF5FA8',
+  pink: '#FF3D2E',
   blush: '#F7C6D9',
   bone: '#F3EBDD',
   orange: '#FF6A1A',
